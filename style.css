@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(42,123,155,1), rgba(87,199,133,1), rgba(237,221,83,1));
+}
+
+/* Start Button */
+.start-btn {
+    padding: 15px 35px;
+    font-size: 1.3rem;
+    background: #7d2ae8;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Overlay Popup */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+/* Game Container */
+.container {
+    padding: 2rem 6rem;
+    border-radius: 14px;
+    background: rgb(17, 221, 218);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: popup 0.4s ease;
+}
+
+@keyframes popup {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.result_images {
+    display: flex;
+    gap: 7rem;
+}
+
+.container.start .user_result {
+    transform-origin: left;
+    animation: userShake 0.7s ease infinite;
+}
+
+@keyframes userShake {
+    50% { transform: rotate(10deg); }
+}
+
+.container.start .cpu_result {
+    transform-origin: right;
+    animation: cpuShake 0.7s ease infinite;
+}
+
+@keyframes cpuShake {
+    50% { transform: rotate(-10deg); }
+}
+
+.result_images img {
+    width: 100px;
+}
+
+.user_result img {
+    transform: rotate(90deg);
+}
+
+.cpu_result img {
+    transform: rotate(-90deg) rotateY(180deg);
+}
+
+.result {
+    text-align: center;
+    font-size: 2rem;
+    color: #7d2ae8;
+    margin-top: 1.5rem;
+}
+
+.option_images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+}
+
+.container.start .option_images {
+    pointer-events: none;
+}
+
+.option_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.option_image:hover,
+.option_image.active {
+    opacity: 1;
+}
+
+.option_image img {
+    width: 50px;
+    pointer-events: none;
+}
+
+.option_image p {
+    margin-top: 1rem;
+    color: #7d2ae8;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
